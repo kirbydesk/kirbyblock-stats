@@ -1,0 +1,37 @@
+---
+name: kirbyblock-stats.item
+icon: chart
+tabs:
+  content:
+    label: pw.tab.content
+    fields:
+      headlineContent:
+        extends: pagewizard/headlines/content
+      number:
+        type: text
+        label: kirbyblock-stats.item.number
+        help: kirbyblock-stats.item.number.help
+        required: true
+        width: 1/2
+      unit:
+        type: text
+        label: kirbyblock-stats.item.unit
+        help: kirbyblock-stats.item.unit.help
+        width: 1/2
+      label:
+        type: text
+        label: kirbyblock-stats.item.label
+      max:
+        type: number
+        label: kirbyblock-stats.item.max
+        help: kirbyblock-stats.item.max.help
+        step: any
+        min: 0
+        width: 1/2
+  style:
+    label: pw.tab.style
+    fields:
+      headlineStyle:
+        extends: pagewizard/headlines/style
+      icon:
+        extends: pagewizard/fields/icon

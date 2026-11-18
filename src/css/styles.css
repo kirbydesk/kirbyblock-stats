@@ -1,0 +1,399 @@
+/* DO NOT MODIFY THIS FILE - Override in site/patches/css/kirbyblock-stats/_styles.css */
+
+/* the growing shares (registered: a transition between two of them) */
+@property --pwstats-p { syntax: '<percentage>'; inherits: false; initial-value: 0%; }
+@property --pwstats-sweep { syntax: '<percentage>'; inherits: false; initial-value: 100%; }
+
+/* the colours per variant (Project Wizard → Stats › Design) */
+section[data-block="stats"] {
+	--pw-stats-number: var(--pwstats-item-number);
+	--pw-stats-label: var(--pwstats-item-label);
+	--pw-stats-icon: var(--pwstats-item-icon);
+	--pw-stats-background: var(--pwstats-item-background);
+	--pw-stats-border: var(--pwstats-item-border-color);
+	--pw-stats-bar: var(--pwstats-item-bar);
+	--pw-stats-track: var(--pwstats-item-track);
+	--pw-stats-chart-1: var(--pwstats-item-chart-1);
+	--pw-stats-chart-2: var(--pwstats-item-chart-2);
+	--pw-stats-chart-3: var(--pwstats-item-chart-3);
+	--pw-stats-chart-4: var(--pwstats-item-chart-4);
+	--pw-stats-chart-5: var(--pwstats-item-chart-5);
+	--pw-stats-chart-6: var(--pwstats-item-chart-6);
+}
+section[data-block="stats"][data-style="variant"] {
+	--pw-stats-number: var(--pwstats-item-number-variant);
+	--pw-stats-label: var(--pwstats-item-label-variant);
+	--pw-stats-icon: var(--pwstats-item-icon-variant);
+	--pw-stats-background: var(--pwstats-item-background-variant);
+	--pw-stats-border: var(--pwstats-item-border-color-variant);
+	--pw-stats-bar: var(--pwstats-item-bar-variant);
+	--pw-stats-track: var(--pwstats-item-track-variant);
+	--pw-stats-chart-1: var(--pwstats-item-chart-1-variant);
+	--pw-stats-chart-2: var(--pwstats-item-chart-2-variant);
+	--pw-stats-chart-3: var(--pwstats-item-chart-3-variant);
+	--pw-stats-chart-4: var(--pwstats-item-chart-4-variant);
+	--pw-stats-chart-5: var(--pwstats-item-chart-5-variant);
+	--pw-stats-chart-6: var(--pwstats-item-chart-6-variant);
+}
+section[data-block="stats"][data-style="variant2"] {
+	--pw-stats-number: var(--pwstats-item-number-variant2);
+	--pw-stats-label: var(--pwstats-item-label-variant2);
+	--pw-stats-icon: var(--pwstats-item-icon-variant2);
+	--pw-stats-background: var(--pwstats-item-background-variant2);
+	--pw-stats-border: var(--pwstats-item-border-color-variant2);
+	--pw-stats-bar: var(--pwstats-item-bar-variant2);
+	--pw-stats-track: var(--pwstats-item-track-variant2);
+	--pw-stats-chart-1: var(--pwstats-item-chart-1-variant2);
+	--pw-stats-chart-2: var(--pwstats-item-chart-2-variant2);
+	--pw-stats-chart-3: var(--pwstats-item-chart-3-variant2);
+	--pw-stats-chart-4: var(--pwstats-item-chart-4-variant2);
+	--pw-stats-chart-5: var(--pwstats-item-chart-5-variant2);
+	--pw-stats-chart-6: var(--pwstats-item-chart-6-variant2);
+}
+section[data-block="stats"][data-style="variant3"] {
+	--pw-stats-number: var(--pwstats-item-number-variant3);
+	--pw-stats-label: var(--pwstats-item-label-variant3);
+	--pw-stats-icon: var(--pwstats-item-icon-variant3);
+	--pw-stats-background: var(--pwstats-item-background-variant3);
+	--pw-stats-border: var(--pwstats-item-border-color-variant3);
+	--pw-stats-bar: var(--pwstats-item-bar-variant3);
+	--pw-stats-track: var(--pwstats-item-track-variant3);
+	--pw-stats-chart-1: var(--pwstats-item-chart-1-variant3);
+	--pw-stats-chart-2: var(--pwstats-item-chart-2-variant3);
+	--pw-stats-chart-3: var(--pwstats-item-chart-3-variant3);
+	--pw-stats-chart-4: var(--pwstats-item-chart-4-variant3);
+	--pw-stats-chart-5: var(--pwstats-item-chart-5-variant3);
+	--pw-stats-chart-6: var(--pwstats-item-chart-6-variant3);
+}
+
+section[data-block="stats"] {
+	/* the way to the end: its length, its curve (springing back: past the
+	   end and back), each figure after the one before */
+	--pw-stats-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+	[data-motion="spring"] {
+		--pw-stats-ease: cubic-bezier(0.34, 1.56, 0.64, 1);
+	}
+
+	/* -------------- the gap to the intro --------------*/
+	:is([data-field="tagline"], [data-field="heading"], [data-field="textarea"], [data-field="writer"], [data-field="markdown"]) + [data-block="items"] {
+		padding-top: var(--pwstats-item-text-gap);
+	}
+
+	/* -------------- all views --------------*/
+	[data-field="number"] {
+		margin: 0;
+		font-family: var(--heading-font-family);
+		font-size: var(--pwstats-item-number-size);
+		font-weight: var(--pwstats-item-number-weight);
+		line-height: 1.05;
+		color: var(--pw-stats-number);
+		font-variant-numeric: tabular-nums;
+		white-space: nowrap;
+	}
+	[data-field="unit"] {
+		font-size: var(--pwstats-item-unit-size, 60%);
+		margin-left: 0.08em;
+	}
+	/* (bars, rings: the maximum after the number – "/ 60 cm" – smaller, in the
+	   label's colour) */
+	[data-field="max"] {
+		margin-left: 0.25em;
+		font-size: var(--pwstats-item-unit-size, 60%);
+		color: var(--pw-stats-label);
+	}
+	[data-field="label"] {
+		margin: var(--pwstats-item-label-gap) 0 0;
+		font-size: var(--pwstats-item-label-size);
+		color: var(--pw-stats-label);
+	}
+
+	/* -------------- numbers and rings: tiles in columns --------------*/
+	div[data-block="items"]:is([data-view="numbers"], [data-view="rings"]) {
+		display: grid;
+		gap: var(--pwstats-item-gap);
+		grid-template-columns: repeat(var(--pw-stats-columns, 2), minmax(0, 1fr));
+	}
+	:is([data-view="numbers"], [data-view="rings"]) [data-block="item"] {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		min-width: 0;
+		padding: var(--pwstats-item-padding);
+		border-radius: var(--pwstats-item-radius);
+	}
+	[data-view="numbers"][data-align="center"] [data-block="item"],
+	[data-view="rings"] [data-block="item"] {
+		align-items: center;
+		text-align: center;
+	}
+	:is([data-view="numbers"], [data-view="rings"])[data-surface="on"] [data-block="item"] {
+		background-color: var(--pw-stats-background);
+	}
+	:is([data-view="numbers"], [data-view="rings"])[data-border="on"] [data-block="item"] {
+		border: var(--pwstats-item-border-width) solid var(--pw-stats-border);
+	}
+	:is([data-view="numbers"], [data-view="rings"])[data-shadow="sm"] [data-block="item"] { box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12); }
+	:is([data-view="numbers"], [data-view="rings"])[data-shadow="md"] [data-block="item"] { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); }
+	:is([data-view="numbers"], [data-view="rings"])[data-shadow="lg"] [data-block="item"] { box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18); }
+
+	[data-field="icon"] {
+		display: flex;
+		margin-bottom: var(--pwstats-item-icon-gap);
+
+		svg {
+			width: var(--pwstats-item-icon-size);
+			height: var(--pwstats-item-icon-size);
+			fill: var(--pw-stats-icon);
+		}
+	}
+
+	/* -------------- bars --------------*/
+	div[data-view="bars"] {
+		display: grid;
+		row-gap: calc(var(--pwstats-item-gap) * 1.5);
+
+		[data-block="item"] {
+			min-width: 0;
+		}
+		[data-field="bar-head"] {
+			display: flex;
+			justify-content: space-between;
+			align-items: baseline;
+			gap: 1rem;
+			margin-bottom: var(--pwstats-item-label-gap);
+		}
+		[data-field="label"] {
+			margin: 0;
+		}
+		[data-field="number"] {
+			font-size: calc(var(--pwstats-item-number-size) * 0.5);
+		}
+		[data-field="track"] {
+			height: var(--pwstats-item-bar-height);
+			border-radius: calc(var(--pwstats-item-bar-height) / 2);
+			background-color: var(--pw-stats-track);
+			overflow: hidden;
+		}
+		[data-field="fill"] {
+			height: 100%;
+			width: var(--pwstats-share);
+			border-radius: inherit;
+			background-color: var(--pw-stats-bar);
+		}
+		&[data-bar-corners="square"] [data-field="track"] {
+			border-radius: 0;
+		}
+		&[data-play="wait"] [data-field="fill"] {
+			width: 0;
+		}
+		&[data-play="run"] [data-field="fill"] {
+			transition: width var(--pwstats-item-count-duration) var(--pw-stats-ease) calc(var(--pwstats-i) * var(--pwstats-item-stagger));
+		}
+	}
+
+	/* -------------- rings: the share drawn round, the number inside --------------*/
+	[data-view="rings"] {
+		[data-field="ring-box"] {
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: var(--pwstats-item-ring-size);
+			max-width: 100%;
+			aspect-ratio: 1;
+		}
+		[data-field="ring"] {
+			--pwstats-p: var(--pwstats-share);
+			position: absolute;
+			inset: 0;
+			border-radius: 50%;
+			background: conic-gradient(var(--pw-stats-bar) var(--pwstats-p), var(--pw-stats-track) 0);
+			-webkit-mask: radial-gradient(farthest-side, transparent calc(100% - var(--pwstats-item-ring-width)), #000 calc(100% - var(--pwstats-item-ring-width) + 0.5px));
+			mask: radial-gradient(farthest-side, transparent calc(100% - var(--pwstats-item-ring-width)), #000 calc(100% - var(--pwstats-item-ring-width) + 0.5px));
+		}
+		[data-field="number"] {
+			position: relative;
+			font-size: calc(var(--pwstats-item-number-size) * 0.65);
+			text-align: center;
+		}
+		/* (in the ring: below the number) */
+		[data-field="max"] {
+			display: block;
+			margin: 0.15em 0 0;
+			font-size: 0.4em;
+		}
+		&[data-play="wait"] [data-field="ring"] {
+			--pwstats-p: 0%;
+		}
+		&[data-play="run"] [data-field="ring"] {
+			transition: --pwstats-p var(--pwstats-item-count-duration) var(--pw-stats-ease) calc(var(--pwstats-i) * var(--pwstats-item-stagger));
+		}
+	}
+
+	/* -------------- columns: side by side, the largest full height --------------*/
+	div[data-view="columns"] {
+		display: grid;
+		grid-template-columns: repeat(var(--pwstats-count), minmax(0, 1fr));
+		column-gap: var(--pwstats-item-gap);
+
+		[data-block="item"] {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			min-width: 0;
+			text-align: center;
+		}
+		[data-field="column-area"] {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: flex-end;
+			gap: 0.375rem;
+			width: 100%;
+			height: var(--pwstats-item-column-height);
+			border-bottom: var(--pwstats-item-border-width) solid var(--pw-stats-border);
+		}
+		[data-field="number"] {
+			font-size: calc(var(--pwstats-item-number-size) * 0.5);
+		}
+		[data-field="column"] {
+			width: 100%;
+			max-width: 5rem;
+			height: calc(var(--pwstats-share) * 0.8);
+			border-radius: 0.375rem 0.375rem 0 0;
+			background-color: var(--pw-stats-bar);
+		}
+		&[data-bar-corners="square"] [data-field="column"] {
+			border-radius: 0;
+		}
+		&[data-play="wait"] [data-field="column"] {
+			height: 0;
+		}
+		&[data-play="run"] [data-field="column"] {
+			transition: height var(--pwstats-item-count-duration) var(--pw-stats-ease) calc(var(--pwstats-i) * var(--pwstats-item-stagger));
+		}
+	}
+
+	/* -------------- pie: the chart and its legend --------------*/
+	div[data-view="pie"] {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: calc(var(--pwstats-item-gap) * 3);
+
+		[data-field="pie"] {
+			--pwstats-sweep: 100%;
+			flex: 0 0 auto;
+			width: calc(var(--pwstats-item-ring-size) * 1.5);
+			aspect-ratio: 1;
+			border-radius: 50%;
+			-webkit-mask: conic-gradient(#000 var(--pwstats-sweep), transparent 0);
+			mask: conic-gradient(#000 var(--pwstats-sweep), transparent 0);
+		}
+		[data-pie="donut"] {
+			-webkit-mask: conic-gradient(#000 var(--pwstats-sweep), transparent 0), radial-gradient(farthest-side, transparent 56%, #000 calc(56% + 0.5px));
+			-webkit-mask-composite: source-in;
+			mask: conic-gradient(#000 var(--pwstats-sweep), transparent 0) intersect, radial-gradient(farthest-side, transparent 56%, #000 calc(56% + 0.5px));
+		}
+		[data-field="legend"] {
+			display: grid;
+			gap: calc(var(--pwstats-item-gap) * 0.75);
+			min-width: 0;
+		}
+		[data-block="item"] {
+			display: flex;
+			align-items: baseline;
+			gap: 0.75rem;
+		}
+		[data-field="swatch"] {
+			flex: 0 0 auto;
+			width: 0.875rem;
+			height: 0.875rem;
+			border-radius: 0.1875rem;
+			align-self: center;
+		}
+		[data-field="number"] {
+			min-width: 4.5ch;
+			font-size: calc(var(--pwstats-item-number-size) * 0.5);
+		}
+		[data-field="label"] {
+			margin: 0;
+		}
+		&[data-play="wait"] [data-field="pie"] {
+			--pwstats-sweep: 0%;
+		}
+		&[data-play="run"] [data-field="pie"] {
+			transition: --pwstats-sweep var(--pwstats-item-count-duration) cubic-bezier(0.22, 0.61, 0.36, 1);
+		}
+	}
+}
+
+/* the columns per device (the block's; below 640px those of "sm") */
+section[data-block="stats"] div[data-block="items"][data-columns-sm="1"] { --pw-stats-columns: 1; }
+section[data-block="stats"] div[data-block="items"][data-columns-sm="2"] { --pw-stats-columns: 2; }
+section[data-block="stats"] div[data-block="items"][data-columns-sm="3"] { --pw-stats-columns: 3; }
+section[data-block="stats"] div[data-block="items"][data-columns-sm="4"] { --pw-stats-columns: 4; }
+section[data-block="stats"] div[data-block="items"][data-columns-sm="5"] { --pw-stats-columns: 5; }
+section[data-block="stats"] div[data-block="items"][data-columns-sm="6"] { --pw-stats-columns: 6; }
+@media (min-width: 768px) {
+	section[data-block="stats"] div[data-block="items"][data-columns-md="1"] { --pw-stats-columns: 1; }
+	section[data-block="stats"] div[data-block="items"][data-columns-md="2"] { --pw-stats-columns: 2; }
+	section[data-block="stats"] div[data-block="items"][data-columns-md="3"] { --pw-stats-columns: 3; }
+	section[data-block="stats"] div[data-block="items"][data-columns-md="4"] { --pw-stats-columns: 4; }
+	section[data-block="stats"] div[data-block="items"][data-columns-md="5"] { --pw-stats-columns: 5; }
+	section[data-block="stats"] div[data-block="items"][data-columns-md="6"] { --pw-stats-columns: 6; }
+}
+@media (min-width: 1024px) {
+	section[data-block="stats"] div[data-block="items"][data-columns-lg="1"] { --pw-stats-columns: 1; }
+	section[data-block="stats"] div[data-block="items"][data-columns-lg="2"] { --pw-stats-columns: 2; }
+	section[data-block="stats"] div[data-block="items"][data-columns-lg="3"] { --pw-stats-columns: 3; }
+	section[data-block="stats"] div[data-block="items"][data-columns-lg="4"] { --pw-stats-columns: 4; }
+	section[data-block="stats"] div[data-block="items"][data-columns-lg="5"] { --pw-stats-columns: 5; }
+	section[data-block="stats"] div[data-block="items"][data-columns-lg="6"] { --pw-stats-columns: 6; }
+}
+@media (min-width: 1280px) {
+	section[data-block="stats"] div[data-block="items"][data-columns-xl="1"] { --pw-stats-columns: 1; }
+	section[data-block="stats"] div[data-block="items"][data-columns-xl="2"] { --pw-stats-columns: 2; }
+	section[data-block="stats"] div[data-block="items"][data-columns-xl="3"] { --pw-stats-columns: 3; }
+	section[data-block="stats"] div[data-block="items"][data-columns-xl="4"] { --pw-stats-columns: 4; }
+	section[data-block="stats"] div[data-block="items"][data-columns-xl="5"] { --pw-stats-columns: 5; }
+	section[data-block="stats"] div[data-block="items"][data-columns-xl="6"] { --pw-stats-columns: 6; }
+}
+
+/* dividers (numbers): a line before every figure but the first of its row (each
+   device restores all lines first, then takes the first of its rows') */
+section[data-block="stats"] div[data-view="numbers"][data-dividers="on"][data-columns-sm] [data-block="item"]:nth-child(n) { border-left: var(--pwstats-item-border-width) solid var(--pw-stats-border); }
+section[data-block="stats"] div[data-view="numbers"][data-dividers="on"][data-columns-sm="1"] [data-block="item"]:nth-child(1n+1) { border-left: 0; }
+section[data-block="stats"] div[data-view="numbers"][data-dividers="on"][data-columns-sm="2"] [data-block="item"]:nth-child(2n+1) { border-left: 0; }
+section[data-block="stats"] div[data-view="numbers"][data-dividers="on"][data-columns-sm="3"] [data-block="item"]:nth-child(3n+1) { border-left: 0; }
+section[data-block="stats"] div[data-view="numbers"][data-dividers="on"][data-columns-sm="4"] [data-block="item"]:nth-child(4n+1) { border-left: 0; }
+section[data-block="stats"] div[data-view="numbers"][data-dividers="on"][data-columns-sm="5"] [data-block="item"]:nth-child(5n+1) { border-left: 0; }
+section[data-block="stats"] div[data-view="numbers"][data-dividers="on"][data-columns-sm="6"] [data-block="item"]:nth-child(6n+1) { border-left: 0; }
+@media (min-width: 768px) {
+	section[data-block="stats"] div[data-view="numbers"][data-dividers="on"][data-columns-md] [data-block="item"]:nth-child(n) { border-left: var(--pwstats-item-border-width) solid var(--pw-stats-border); }
+	section[data-block="stats"] div[data-view="numbers"][data-dividers="on"][data-columns-md="1"] [data-block="item"]:nth-child(1n+1) { border-left: 0; }
+	section[data-block="stats"] div[data-view="numbers"][data-dividers="on"][data-columns-md="2"] [data-block="item"]:nth-child(2n+1) { border-left: 0; }
+	section[data-block="stats"] div[data-view="numbers"][data-dividers="on"][data-columns-md="3"] [data-block="item"]:nth-child(3n+1) { border-left: 0; }
+	section[data-block="stats"] div[data-view="numbers"][data-dividers="on"][data-columns-md="4"] [data-block="item"]:nth-child(4n+1) { border-left: 0; }
+	section[data-block="stats"] div[data-view="numbers"][data-dividers="on"][data-columns-md="5"] [data-block="item"]:nth-child(5n+1) { border-left: 0; }
+	section[data-block="stats"] div[data-view="numbers"][data-dividers="on"][data-columns-md="6"] [data-block="item"]:nth-child(6n+1) { border-left: 0; }
+}
+@media (min-width: 1024px) {
+	section[data-block="stats"] div[data-view="numbers"][data-dividers="on"][data-columns-lg] [data-block="item"]:nth-child(n) { border-left: var(--pwstats-item-border-width) solid var(--pw-stats-border); }
+	section[data-block="stats"] div[data-view="numbers"][data-dividers="on"][data-columns-lg="1"] [data-block="item"]:nth-child(1n+1) { border-left: 0; }
+	section[data-block="stats"] div[data-view="numbers"][data-dividers="on"][data-columns-lg="2"] [data-block="item"]:nth-child(2n+1) { border-left: 0; }
+	section[data-block="stats"] div[data-view="numbers"][data-dividers="on"][data-columns-lg="3"] [data-block="item"]:nth-child(3n+1) { border-left: 0; }
+	section[data-block="stats"] div[data-view="numbers"][data-dividers="on"][data-columns-lg="4"] [data-block="item"]:nth-child(4n+1) { border-left: 0; }
+	section[data-block="stats"] div[data-view="numbers"][data-dividers="on"][data-columns-lg="5"] [data-block="item"]:nth-child(5n+1) { border-left: 0; }
+	section[data-block="stats"] div[data-view="numbers"][data-dividers="on"][data-columns-lg="6"] [data-block="item"]:nth-child(6n+1) { border-left: 0; }
+}
+@media (min-width: 1280px) {
+	section[data-block="stats"] div[data-view="numbers"][data-dividers="on"][data-columns-xl] [data-block="item"]:nth-child(n) { border-left: var(--pwstats-item-border-width) solid var(--pw-stats-border); }
+	section[data-block="stats"] div[data-view="numbers"][data-dividers="on"][data-columns-xl="1"] [data-block="item"]:nth-child(1n+1) { border-left: 0; }
+	section[data-block="stats"] div[data-view="numbers"][data-dividers="on"][data-columns-xl="2"] [data-block="item"]:nth-child(2n+1) { border-left: 0; }
+	section[data-block="stats"] div[data-view="numbers"][data-dividers="on"][data-columns-xl="3"] [data-block="item"]:nth-child(3n+1) { border-left: 0; }
+	section[data-block="stats"] div[data-view="numbers"][data-dividers="on"][data-columns-xl="4"] [data-block="item"]:nth-child(4n+1) { border-left: 0; }
+	section[data-block="stats"] div[data-view="numbers"][data-dividers="on"][data-columns-xl="5"] [data-block="item"]:nth-child(5n+1) { border-left: 0; }
+	section[data-block="stats"] div[data-view="numbers"][data-dividers="on"][data-columns-xl="6"] [data-block="item"]:nth-child(6n+1) { border-left: 0; }
+}
