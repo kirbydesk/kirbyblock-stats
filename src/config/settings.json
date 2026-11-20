@@ -85,6 +85,13 @@
 					"variant": "#7F8C8D",
 					"variant2": "#BDC3C7",
 					"variant3": "#BDC3C7"
+				},
+				"item-glow": {
+					"label": "kirbyblock-stats.glow-custom",
+					"default": "#1D548B",
+					"variant": "#1D548B",
+					"variant2": "#8CBAE7",
+					"variant3": "#8CBAE7"
 				}
 			},
 			"vars": {
@@ -540,6 +547,150 @@
 					"lg"
 				],
 				"default": "none"
+			},
+			"item-glow": {
+				"label": "kirbyblock-stats.glow",
+				"options": [
+					"off",
+					"always",
+					"hover"
+				],
+				"default": "off"
+			},
+			"item-glow-variant": {
+				"label": "kirbyblock-stats.glow",
+				"options": [
+					"off",
+					"always",
+					"hover"
+				],
+				"default": "off"
+			},
+			"item-glow-variant2": {
+				"label": "kirbyblock-stats.glow",
+				"options": [
+					"off",
+					"always",
+					"hover"
+				],
+				"default": "off"
+			},
+			"item-glow-variant3": {
+				"label": "kirbyblock-stats.glow",
+				"options": [
+					"off",
+					"always",
+					"hover"
+				],
+				"default": "off"
+			},
+			"item-glow-color": {
+				"label": "kirbyblock-stats.glow-color",
+				"options": [
+					"cyan",
+					"pink",
+					"violet",
+					"amber",
+					"custom"
+				],
+				"default": "cyan"
+			},
+			"item-glow-color-variant": {
+				"label": "kirbyblock-stats.glow-color",
+				"options": [
+					"cyan",
+					"pink",
+					"violet",
+					"amber",
+					"custom"
+				],
+				"default": "cyan"
+			},
+			"item-glow-color-variant2": {
+				"label": "kirbyblock-stats.glow-color",
+				"options": [
+					"cyan",
+					"pink",
+					"violet",
+					"amber",
+					"custom"
+				],
+				"default": "cyan"
+			},
+			"item-glow-color-variant3": {
+				"label": "kirbyblock-stats.glow-color",
+				"options": [
+					"cyan",
+					"pink",
+					"violet",
+					"amber",
+					"custom"
+				],
+				"default": "cyan"
+			},
+			"item-glow-direction": {
+				"label": "kirbyblock-stats.glow-direction",
+				"options": [
+					"around",
+					"down"
+				],
+				"default": "around"
+			},
+			"item-glow-direction-variant": {
+				"label": "kirbyblock-stats.glow-direction",
+				"options": [
+					"around",
+					"down"
+				],
+				"default": "around"
+			},
+			"item-glow-direction-variant2": {
+				"label": "kirbyblock-stats.glow-direction",
+				"options": [
+					"around",
+					"down"
+				],
+				"default": "around"
+			},
+			"item-glow-direction-variant3": {
+				"label": "kirbyblock-stats.glow-direction",
+				"options": [
+					"around",
+					"down"
+				],
+				"default": "around"
+			},
+			"item-glow-strength": {
+				"label": "kirbyblock-stats.glow-strength",
+				"options": [
+					"subtle",
+					"strong"
+				],
+				"default": "subtle"
+			},
+			"item-glow-strength-variant": {
+				"label": "kirbyblock-stats.glow-strength",
+				"options": [
+					"subtle",
+					"strong"
+				],
+				"default": "subtle"
+			},
+			"item-glow-strength-variant2": {
+				"label": "kirbyblock-stats.glow-strength",
+				"options": [
+					"subtle",
+					"strong"
+				],
+				"default": "subtle"
+			},
+			"item-glow-strength-variant3": {
+				"label": "kirbyblock-stats.glow-strength",
+				"options": [
+					"subtle",
+					"strong"
+				],
+				"default": "subtle"
 			},
 			"item-count": {
 				"label": "kirbyblock-stats.animation",

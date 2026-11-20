@@ -103,6 +103,16 @@ if ($items):
 	echo ' data-border="'.$onOff('item-border', 'off').'"';
 	echo ' data-dividers="'.$onOff('item-dividers', 'off').'"';
 	echo ' data-shadow="'.esc($defaults['item-shadow'] ?? 'none', 'attr').'"';
+	// the glow (Project Wizard › Blocks, per variant; the custom variant: the default's)
+	$glowSuffix = in_array($theme, ['variant', 'variant2', 'variant3'], true) ? '-' . $theme : '';
+	$glowValue  = fn (string $key, array $allowed) => in_array($v = $defaults[$key . $glowSuffix] ?? $defaults[$key] ?? $allowed[0], $allowed, true) ? $v : $allowed[0];
+	$glow       = $glowValue('item-glow', ['off', 'always', 'hover']);
+	if ($glow !== 'off'):
+		echo ' data-glow="'.$glow.'"';
+		echo ' data-glow-color="'.$glowValue('item-glow-color', ['cyan', 'pink', 'violet', 'amber', 'custom']).'"';
+		if ($glowValue('item-glow-direction', ['around', 'down']) === 'down') echo ' data-glow-direction="down"';
+		if ($glowValue('item-glow-strength', ['subtle', 'strong']) === 'strong') echo ' data-glow-strength="strong"';
+	endif;
 	echo ' data-motion="'.(($defaults['item-motion'] ?? 'soft') === 'spring' ? 'spring' : 'soft').'"';
 	echo ' data-bar-corners="'.(($defaults['item-bar-corners'] ?? 'round') === 'square' ? 'square' : 'round').'"';
 	if ($view === 'columns') echo ' style="--pwstats-count: '.count($items).'"';
